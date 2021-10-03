@@ -6,7 +6,7 @@
 
 # navigate into current working directory
 
-sudo cd /root/the-example-app.nodejs
+cd /root/the-example-app.nodejs
 
 # install node modules
 
