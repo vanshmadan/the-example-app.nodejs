@@ -13,5 +13,4 @@ sudo cd /root/the-example-app.nodejs
 npm install
 
 # start our node app in the background using pm2
-
-sudo npm run start:dev
+npm run start:dev &
