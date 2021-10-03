@@ -1,18 +1,12 @@
-name: Automate Deploy to Amazon EC2 using Github actions
-
+name: CI/CD Pipeline
 on:
-
-push:
-
-branches: [ master ]
+  push:
+    branches: [ master ]
 
 jobs:
-
-deploy:
-
-runs-on: ubuntu-latest
-
-steps:
+  continuous-integration:
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout to repo
         uses: actions/checkout@v2 
      # Step 1
@@ -22,21 +16,12 @@ steps:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-
-# Step 3
-
-– name: Create CodeDeploy Deployment
-
-id: deploy
-
-run: |
-
-aws deploy create-deployment \
-
-–application-name nodeblog_application1 \
-
-–deployment-group-name nodeblog_deployment \
-
-–deployment-config-name CodeDeployDefault.OneAtATime \
-
-–github-location repository=${{ github.repository }},commitId=${{ github.sha }}
+      
+      - name: Create CodeDeploy Deployment
+        id: deploy
+        run: |
+          aws deploy create-deployment \
+            --application-name nodeblog_application1 \
+            --deployment-group-name nodeblog_deployment \
+            --deployment-config-name CodeDeployDefault.OneAtATime \
+            --github-location repository=${{ github.repository }},commitId=${{ github.sha }}
