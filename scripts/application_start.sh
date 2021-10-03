@@ -6,7 +6,7 @@ sudo chmod -R 777 /home/ubuntu/the-example-app.nodejs
 
 # navigate into current working directory
 
-cd /home/ubuntu/the-example-app.nodejs
+sudo cd /root/the-example-app.nodejs
 
 # install node modules
 
