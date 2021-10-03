@@ -1,5 +1,5 @@
 #!/bin/bash
 
-# stop existing node servers
+# stop existing node servers#
 
 echo “Stopping any existing node servers.”
